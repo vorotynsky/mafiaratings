@@ -128,20 +128,20 @@ class Page extends TournamentPageBase
 		{
 			if ($sort & 1)
 			{
-				$query->add(' ORDER BY abs, val, cnt DESC LIMIT ' $lim '');
+				$query->add(' ORDER BY abs, val, cnt DESC LIMIT ' .$lim. '');
 			}
 			else
 			{
-				$query->add(' ORDER BY abs DESC, val DESC, cnt DESC LIMIT ' $lim '');
+				$query->add(' ORDER BY abs DESC, val DESC, cnt DESC LIMIT ' .$lim. '');
 			}
 		}
 		else if ($sort & 1)
 		{
-			$query->add(' ORDER BY val, abs, cnt DESC LIMIT ' $lim '');
+			$query->add(' ORDER BY val, abs, cnt DESC LIMIT ' .$lim. '');
 		}
 		else
 		{
-			$query->add(' ORDER BY val DESC, abs DESC, cnt DESC LIMIT ' $lim '');
+			$query->add(' ORDER BY val DESC, abs DESC, cnt DESC LIMIT ' .$lim. '');
 		}
 		
 		echo '<table class="bordered light" width="100%">';
