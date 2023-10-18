@@ -82,6 +82,12 @@ class Page extends TournamentPageBase
 		{
 			$sort = $_REQUEST['sort'];
 		}
+
+		$lim = 10;
+		if (isset($_REQUEST['limit'])) 
+		{
+			$lim = (int)$_REQUEST['limit'];
+		}
 		
 		echo '<p><table class="transp" width="100%"><tr><td>';
 		show_roles_select($roles, 'filterChanged()', get_label('Use only the stats of a specific role.'));
@@ -122,20 +128,20 @@ class Page extends TournamentPageBase
 		{
 			if ($sort & 1)
 			{
-				$query->add(' ORDER BY abs, val, cnt DESC LIMIT 10');
+				$query->add(' ORDER BY abs, val, cnt DESC LIMIT ' $lim '');
 			}
 			else
 			{
-				$query->add(' ORDER BY abs DESC, val DESC, cnt DESC LIMIT 10');
+				$query->add(' ORDER BY abs DESC, val DESC, cnt DESC LIMIT ' $lim '');
 			}
 		}
 		else if ($sort & 1)
 		{
-			$query->add(' ORDER BY val, abs, cnt DESC LIMIT 10');
+			$query->add(' ORDER BY val, abs, cnt DESC LIMIT ' $lim '');
 		}
 		else
 		{
-			$query->add(' ORDER BY val DESC, abs DESC, cnt DESC LIMIT 10');
+			$query->add(' ORDER BY val DESC, abs DESC, cnt DESC LIMIT ' $lim '');
 		}
 		
 		echo '<table class="bordered light" width="100%">';
